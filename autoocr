@@ -12,4 +12,11 @@ FILE="$1"
 
 [ -r "$FILE" ] || exit 1
 
-echo tesseract -l $TESSLANG  "$FILE" "$FILE" 
+tesseract -l $TESSLANG  "$FILE" "$FILE" 
+
+if [ "$?" != "0" ] 
+then
+	echo "tesseract OCR for file '$FILE' failed with exit code '$?'."
+	exit 1
+fi
+
