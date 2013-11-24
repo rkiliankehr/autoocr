@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+#	autoocr <image-file>  
+#
+
+set -x
+
+# If the TESSLANG variable is set use it, otherwise default to German language pack.
+TESSLANG=${TESSLANG:-deu}
+
+FILE="$1"
+
+[ -r "$FILE" ] || exit 1
+
+echo tesseract -l $TESSLANG  "$FILE" "$FILE" 
