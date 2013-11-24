@@ -1,0 +1,20 @@
+#!/bin/sh
+
+DIR="$1"
+
+if [ ! -d "$DIR" ]
+then 
+     exit 1
+fi
+
+ls "$DIR"/*.tif |
+while read f
+do
+	/opt/autoocr/autoocr "$f"
+	if [ $? != 0 ]
+	then
+		exit 1
+	fi
+	mv "$f" "$f".ocr-processed 
+done
+ 
