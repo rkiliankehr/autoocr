@@ -47,11 +47,11 @@ The installation blog above will guide you through all the steps 1-3.
 For the installation of the language packs I deviated from the description and did the following:
 
 * Download the English and German language packs from http://code.google.com/p/tesseract-ocr/downloads/list.
-* Extract and copy them to `/usr/share/tesseract/tessdata/`
+* Extract and copy them to `/usr/local/share/tessdata/`
 
 This worked fine for me.
 
-To check whether the installation is complete do the following:
+To check whether the installation of the binaries is complete do the following:
 
     $ tesseract -v
     tesseract 3.02.02
@@ -62,6 +62,16 @@ This shows that leptonica is installed and the JPEG, PNG, and TIFF libraries are
 If your output deviates it is likely that your installation is not complete. 
 In this case check back with the installation blog.
 
+To check that the language packs are properly installed to the following:
+
+    $ tesseract --list-langs
+    List of available languages (3):
+    deu-frak
+    deu
+    eng
+
+If you don't see the language packs here something is wrong and you check that the respective files 
+are present in `/usr/local/share/tessdata`.
 
 
 
